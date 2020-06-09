@@ -17,8 +17,8 @@
 #include <DallasTemperature.h>
 
 #include <SoftwareSerial.h>
-#define RXPIN 6
-#define TXPIN 5
+#define RXPIN 12    //11
+#define TXPIN 11    //12
 SoftwareSerial wifiSerialInit (RXPIN,TXPIN);
 
 void build_temperature_message();
@@ -117,7 +117,7 @@ void setup() {
 
 void loop() {
   uint32_t current_time= millis();
-  if ((current_time - t_last_tx) > 10000){
+  if ((current_time - t_last_tx) > 59000){
     Serial.print(F("******Print LCD - sgs: "));
     Serial.println(millis() / 1000);
     t_last_tx = current_time;
